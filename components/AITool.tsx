@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Sparkles, Send, Copy, Check } from 'lucide-react';
 import { generateAIResponse } from '../services/geminiService';
 
@@ -12,6 +12,12 @@ const AITool: React.FC<AIToolProps> = ({ initialPrompt, tipId }) => {
   const [response, setResponse] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [copied, setCopied] = useState(false);
+
+  // Atualiza o prompt quando a dica muda
+  useEffect(() => {
+    setPrompt(initialPrompt);
+    setResponse(''); // Limpa a resposta anterior
+  }, [tipId, initialPrompt]);
 
   const handleGenerate = async () => {
     if (!prompt.trim()) return;
