@@ -1,26 +1,25 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
-// Initialize the client strictly according to instructions
-// Assuming process.env.API_KEY is available in the environment
-const apiKey = process.env.API_KEY || ''; 
+// Initialize the Gemini API client
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY || '';
 
-const ai = new GoogleGenAI({ apiKey: apiKey });
+const genAI = new GoogleGenerativeAI(apiKey);
 
 export const generateAIResponse = async (prompt: string): Promise<string> => {
   if (!apiKey) {
-    return "⚠️ Erro de Configuração: API_KEY não encontrada. Por favor, configure a chave da API no ambiente.";
+    return "⚠️ Erro de Configuração: VITE_GEMINI_API_KEY não encontrada. Por favor, configure a chave da API no ambiente.";
   }
 
   try {
-    const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
-      contents: prompt,
-      config: {
-        thinkingConfig: { thinkingBudget: 0 } // Disable thinking for faster response on simple tasks
-      }
-    });
+    // Get the generative model
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
+
+    // Generate content
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    const text = response.text();
     
-    return response.text || "Sem resposta gerada.";
+    return text || "Sem resposta gerada.";
   } catch (error) {
     console.error("Gemini API Error:", error);
     return "Desculpe, ocorreu um erro ao processar sua solicitação com a IA. Tente novamente em instantes.";

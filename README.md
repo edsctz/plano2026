@@ -1,20 +1,47 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Plano 2026 - AI-Powered Planning Application
 
-# Run and deploy your AI Studio app
+## Setup
 
-This contains everything you need to run your app locally.
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-View your app in AI Studio: https://ai.studio/apps/drive/1657mrlZyi-zEzfWYZld4T09WdF44zIiv
+3. Create a `.env` file based on `.env.example`:
+   ```bash
+   cp .env.example .env
+   ```
 
-## Run Locally
+4. Add your Gemini API key to `.env`:
+   ```
+   VITE_GEMINI_API_KEY=your_actual_api_key_here
+   ```
 
-**Prerequisites:**  Node.js
+5. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
+## Deployment to Vercel
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+1. Push your code to GitHub
+2. Import the project in Vercel
+3. Add the environment variable in Vercel:
+   - Go to Project Settings → Environment Variables
+   - Add `VITE_GEMINI_API_KEY` with your API key
+4. Deploy
+
+## Environment Variables
+
+- `VITE_GEMINI_API_KEY`: Your Google Gemini API key (required)
+
+## Tech Stack
+
+- React 18.3.1
+- TypeScript
+- Vite
+- React Router DOM
+- Recharts
+- Lucide React Icons
+- Google Generative AI (Gemini)
