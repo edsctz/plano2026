@@ -28,7 +28,7 @@ const MainLayout: React.FC = () => {
         
         {/* Mobile Header */}
         <header className="bg-white border-b border-slate-200 p-4 lg:hidden flex justify-between items-center z-10 shadow-sm">
-          <div className="font-bold text-slate-800 text-lg">Tokio Marine AI</div>
+          <div className="font-bold text-slate-800 text-lg">IA Corretores</div>
           <button 
             onClick={() => setSidebarOpen(!sidebarOpen)}
             className="p-2 text-slate-600 hover:bg-slate-100 rounded-lg"
