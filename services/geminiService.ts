@@ -11,8 +11,8 @@ export const generateAIResponse = async (prompt: string): Promise<string> => {
   }
 
   try {
-    // Get the generative model
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
+    // Use the stable gemini-2.0-flash model instead of experimental
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
     // Generate content
     const result = await model.generateContent(prompt);
@@ -20,8 +20,18 @@ export const generateAIResponse = async (prompt: string): Promise<string> => {
     const text = response.text();
     
     return text || "Sem resposta gerada.";
-  } catch (error) {
+  } catch (error: any) {
     console.error("Gemini API Error:", error);
+    
+    // Provide more helpful error messages
+    if (error?.message?.includes('quota')) {
+      return "⚠️ Limite de uso da API atingido. Por favor, aguarde alguns minutos e tente novamente.";
+    }
+    
+    if (error?.message?.includes('API key')) {
+      return "⚠️ Erro de autenticação. Verifique se sua chave da API está configurada corretamente.";
+    }
+    
     return "Desculpe, ocorreu um erro ao processar sua solicitação com a IA. Tente novamente em instantes.";
   }
 };
