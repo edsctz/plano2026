@@ -57,7 +57,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentPath, onNavigate, isOpen, setI
         {/* Header */}
         <div className="p-6 border-b border-slate-800 bg-slate-950">
           <h1 className="text-xl font-bold bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">
-            TOKIO MARINE
+            UPClass Especial
           </h1>
           <p className="text-xs text-slate-400 mt-1 uppercase tracking-wider">Impulsione com IA 2026</p>
         </div>

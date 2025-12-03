@@ -21,7 +21,7 @@ const Hero: React.FC<HeroProps> = ({ onStart }) => {
           🚀 Dashboard 2026
         </div>
         <h1 className="text-4xl md:text-6xl font-bold text-slate-900 tracking-tight">
-          Venda <span className="text-emerald-600">3x Mais</span> com a<br/>
+          Venda <span className="text-emerald-600">Mais</span> com a<br/>
           Mesma Quantidade de Horas
         </h1>
         <p className="text-xl text-slate-600 max-w-3xl mx-auto">
@@ -53,7 +53,7 @@ const Hero: React.FC<HeroProps> = ({ onStart }) => {
             <DollarSign size={24} />
           </div>
           <div>
-            <h3 className="font-bold text-slate-900 text-lg">2-3x Mais Vendas</h3>
+            <h3 className="font-bold text-slate-900 text-lg">Mais Vendas</h3>
             <p className="text-slate-500 text-sm mt-1">Aumente sua taxa de conversão e volume de leads.</p>
           </div>
         </div>
